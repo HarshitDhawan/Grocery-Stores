@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact</title>
+	<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200&display=swap"
       rel="stylesheet"
     />
+
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -134,25 +136,50 @@
   
   <div class="container">
     <h1>Get In Touch</h1>
-    <div class="row">
-      <div class="col-md-6">
-        <form class="contact-form" ><!--method="post" action="ContactForm.php"-->
-        <div class="form-group">
-        <input type="text" class="form-control" placeholder="Your Name..">
-        </div>
-        <div class="form-group">
-        <input type="number" class="form-control" placeholder="Phone no.">
-        </div>
-        <div class="form-group">
-        <input type="email" class="form-control" placeholder="Email..">
-        </div>
-        <div class="form-group">
-        <textarea class="form-control" rows="4" placeholder="Message.."></textarea>
-        </div>
-      
-        <button type="submit" class="btn btn-success pull-right" >Submit</button>
+    <form id="emailForm">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br> <!-- Use input type "text" for name and phone -->
+    <label for="phone">Phone Number:</label><br>
+    <input type="number" id="phone" name="phone"><br>
+	<label for="email">Email Address:</label><br>
+    <input type="email" id="email" name="email"><br>
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message"></textarea><br>
+    <input type="submit" value="Submit">
+</form>
 
-        </form>
+<script>
+(function() {
+    emailjs.init("kPl13L4wI5zrMvayK"); // Replace with your EmailJS user ID
+
+    document.getElementById("emailForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
+		var email = document.getElementById("email").value;
+        var message = document.getElementById("message").value;
+        if (message) {
+            var templateParams = {
+                name: name,
+                phone: phone, // Add a comma here
+				email: email,
+                message: message
+            };
+
+            emailjs.send("service_99mbph5", "template_eh2z6s4", templateParams)
+                .then(function(response) {
+                    console.log("Email sent:", response);
+                    alert("Email sent successfully!");
+                })
+                .catch(function(error) {
+                    console.error("Email sending error:", error);
+                    alert("Email sending failed.");
+                });
+        }
+    });
+})();
+</script>
       </div>
       <div class="col-md-6 contact-info">
         <div class="follow"><b><i class="fa fa-map-marker"></i>  </b>Sitio Takas, Brgy. Enclaro, Binalbagan, Negros Occidental</div>
