@@ -88,13 +88,20 @@
 			<div class="product-description" data-name="Potato" data-price="15">
 				
 				<p class="product-price">&#8369;15</p>
-				<form class="add-to-cart" action="cart.html" method="post">
+				<form class="add-to-cart" action="cart.html" method="POST" enctype="application/x-www-form-urlencoded">
 							<div>
 								<label for="qty-2">kg</label>
 								<input type="text" name="qty-2" id="qty-2" class="qty" value="1" />
 							</div>
 							<p><input type="submit" value="Add to cart" class="btn" /></p>
 						</form>
+<script>
+document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Submission successful!');
+      });
+
+</script>
 						
 			</div>
 			</div>
