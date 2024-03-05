@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         echo "Registration successful!";
-        header("Location: login.php");
+	echo "<script>window.location.href='https://harshitdhawan.github.io/Grocery-Stores/index.html';</script>";
         exit();
     } else {
         echo "Error: " . $conn->error;

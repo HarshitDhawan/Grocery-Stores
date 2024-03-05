@@ -68,13 +68,19 @@
                 <button type="submit" class="btn">Login</button>
                 <a href="">Forgot Password</a>
               </form>
-              <form action="" id="RegForm">
-                <input type="text" placeholder="Username" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-
-                <button type="submit" class="btn">Register</button>
-              </form>
+              <form action="register.php" method="POST" id="RegForm">
+  <input type="text" placeholder="Username" name="username" required>
+  <input type="password" placeholder="Password" name="password" required>
+  <input type="email" placeholder="Email" name="email" required>
+  <input type="text" placeholder="First Name" name="first_name" required>
+  <input type="text" placeholder="Last Name" name="last_name" required>
+  <input type="text" placeholder="Address" name="address" required>
+  <input type="text" placeholder="City" name="city" required>
+  <input type="text" placeholder="State" name="state" required>
+  <input type="text" placeholder="Country" name="country" required>
+  <input type="text" placeholder="Postal Code" name="postal_code" required>
+  <button type="submit" class="btn">Register</button>
+</form>
             </div>
           </div>
         </div>
@@ -141,8 +147,7 @@
         }
       }
     </script>
-    <!-- 
-js for toggle form -->
+    <!-- js for toggle form -->
     <script>
       var LoginForm = document.getElementById("LoginForm");
       var RegForm = document.getElementById("RegForm");
@@ -152,12 +157,18 @@ js for toggle form -->
         RegForm.style.transform = "translateX(0px)";
         LoginForm.style.transform = "translateX(0px)";
         indicator.style.transform = "translateX(100px)";
+        RegForm.style.display = "block";
+        LoginForm.style.display = "none";
+	RegForm.style.height = "750px";
       }
 
       function login() {
         RegForm.style.transform = "translateX(300px)";
         LoginForm.style.transform = "translateX(300px)";
         indicator.style.transform = "translateX(0px)";
+        RegForm.style.display = "none";
+        LoginForm.style.display = "block";
+	LoginForm.style.height = "400px";
       }
     </script>
   </body>
