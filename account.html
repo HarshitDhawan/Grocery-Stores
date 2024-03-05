@@ -61,14 +61,14 @@
                 <span onclick="register()">Register</span>
                 <hr id="indicator" />
               </div>
-              <form action="" id="LoginForm">
+              <form action="" id="LoginForm" enctype="multipart/form-data">
                 <input type="text" placeholder="Username" />
                 <input type="password" placeholder="Password" />
 
                 <button type="submit" class="btn">Login</button>
                 <a href="">Forgot Password</a>
               </form>
-              <form action="register.php" method="POST" id="RegForm">
+              <form action="register.php" method="POST" id="RegForm" enctype="multipart/form-data">
   <input type="text" placeholder="Username" name="username" required>
   <input type="password" placeholder="Password" name="password" required>
   <input type="email" placeholder="Email" name="email" required>
